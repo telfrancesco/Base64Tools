@@ -11,26 +11,27 @@ public class Base64Tool {
 		try {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 			String messaggio = "";
-
+			messaggio = reader.readLine();
+			
+			System.out.println("[----------------------+----------------------]");
+			System.out.println("");
 			System.out.println("-> Seleziona il metodo che vuoi eseguire <-");
 			System.out.println("");
 			System.out.println("1) Encode");
 			System.out.println("2) Decode");
 			System.out.println("");
-			System.out.println("-> Seleziona il metodo che vuoi eseguire <-");
-
-			messaggio = reader.readLine();
+			System.out.println("");
+			System.out.println("[----------------------+----------------------]");
+			
 			if(messaggio.equals("1") || messaggio.equalsIgnoreCase("Encode")) {
 				System.out.println("Ok, hai scelto Encode, mandami il testo da Codificare in Base64!");
 				try {
 					String input = reader.readLine();
 					System.out.println("Stringa da Codificare: " + input);
 
-					Thread.sleep(1500);
 					String encodedString = Base64.getEncoder().encodeToString(input.getBytes());
 					System.out.println("Stringa codificata con successo!");
 
-					Thread.sleep(1500);
 					System.out.println("Risultato finale: " + encodedString);
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -40,12 +41,12 @@ public class Base64Tool {
 				try {
 					String input = reader.readLine();
 					System.out.println("Stringa da Decodificare: " + input);
-					Thread.sleep(1500);
+
 					byte[] decode = input.getBytes();
 					byte[] output = Base64.getDecoder().decode(decode);
 					String decodedString = new String(output);
+					
 					System.out.println("Stringa decodificata con successo!");
-					Thread.sleep(1500);
 					System.out.println("Risultato finale: " + decodedString);
 				} catch (IOException e) {
 					e.printStackTrace();
